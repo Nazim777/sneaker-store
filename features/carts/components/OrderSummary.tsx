@@ -1,11 +1,16 @@
-import { useCart } from "@/components/providers/cartProvider";
-import React from "react";
+"use client";
 
-const OrderSummary = () => {
-  const { state } = useCart();
-  const delivery = 6.99;
-  const salesTax = 0.0;
+export default function OrderSummary({
+  state,
+  delivery,
+  salesTax,
+}: {
+  state: any;
+  delivery: number;
+  salesTax: number;
+}) {
   const orderTotal = state.total + (state.total > 0 ? delivery : 0) + salesTax;
+
   return (
     <div className="w-full lg:w-[400px] bg-white lg:bg-transparent p-8 lg:p-0 rounded-[2rem] lg:rounded-none shadow-sm lg:shadow-none mt-4 lg:mt-0">
       <h2 className="text-2xl font-bold mb-6">Order Summary</h2>
@@ -34,10 +39,8 @@ const OrderSummary = () => {
       </button>
 
       <button className="w-full mt-5 text-left text-sm font-medium underline decoration-1 underline-offset-4 text-gray-700">
-        User a promo code
+        Use a promo code
       </button>
     </div>
   );
-};
-
-export default OrderSummary;
+}
